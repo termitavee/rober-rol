@@ -1,0 +1,32 @@
+{
+  "name": "@workspace/ink",
+  "description": "",
+  "license": "MIT",
+  "version": "0.0.0",
+  "bin": "dist/cli.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "prettier --check . && xo && ava"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "ink": "^4.1.0",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.32",
+    "@vdemedes/prettier-config": "^2.0.1",
+    "chalk": "^5.2.0",
+    "ink-testing-library": "^3.0.0",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.3"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

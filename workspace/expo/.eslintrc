@@ -1,0 +1,15 @@
+{
+  "extends": ["../../.eslintrc"],
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "config/test/test-utils.tsx"],
+        "optionalDependencies": true,
+        "peerDependencies": false,
+        "bundledDependencies": false,
+        "packageDir": ["./", "../.."]
+      }
+    ] // allow imports absolute path
+  }
+}

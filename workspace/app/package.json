@@ -1,0 +1,23 @@
+{
+  "name": "@workspace/app",
+  "version": "0.0.0",
+  "private": false,
+  "module": "src",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "build-watch": "webpack --config webpack.prod.js --watch",
+    "lint": "TIMING=1 eslint \"src/**/*.{tsx|ts}\"",
+    "lint:fix": "yarn lint --fix",
+    "lint:silent": "npm run lint --quiet",
+    "test": "jest --passWithNoTests",
+    "test:watch": "yarn jest --watch",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "dependencies":{},
+  "devDependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "typescript": "*"
+  }
+}

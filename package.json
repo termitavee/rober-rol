@@ -1,0 +1,52 @@
+{
+  "name": "react-native-universal-monorepo",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "start:expo": "npm run start -w @workspace/expo",
+    "run:electron": "npm run run:electron -w @workspace/electron",
+    "start:electron": "npm run start -w @workspace/electron",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint:all": "npm run lint --workspaces --if-present",
+    "lint": "TIMING=1 eslint \"src/**/*.{tsx|ts}\"",
+    "lint:expo": "npm run lint -w @workspace/expo",
+    "lint:silent": "eslint --workspaces --if-present"
+  },
+  "description": "boilerplate monorepo that uses react native to build all possible platforms",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/termitavee/react-native-universal-monorepo.git"
+  },
+  "private": true,
+  "author": "Termitavee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/termitavee/react-native-universal-monorepo/issues"
+  },
+  "homepage": "https://github.com/termitavee/react-native-universal-monorepo#readme",
+  "workspaces": [
+    "workspace/*"
+  ],
+  "dependencies": {
+    "ink": "^4.4.1"
+  },
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@craco/types": "^7.1.0",
+    "@types/react": "^18.2.21",
+    "@types/react-native": "^0.72.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^27.4.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "typescript": "^4.2.0"
+  }
+}
