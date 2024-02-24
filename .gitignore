@@ -33,11 +33,3 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
-
-
-*.jsbundle
-*.tsbuildinfo
-.DS_Store
-.history
-.jest
-.next
