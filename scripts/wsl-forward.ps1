@@ -1,9 +1,6 @@
 If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {   
   $arguments = "& '" + $myinvocation.mycommand.definition + "'"
-  Start-Process powershell -Verb runAs -ArgumentList $arguments
-
-Write-Host "Require elevated"
-$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+  Start-Process powershell.exe -Verb runAs -ArgumentList $arguments
 
   Break
 }
@@ -24,7 +21,7 @@ else {
   exit;
 }
 
-$ports = @(8080, 8081, 19000, 19001);
+$ports = @(3000,8080, 8081, 19000, 19001);
 
 for ($i = 0; $i -lt $ports.length; $i++) {
   $port = $ports[$i];

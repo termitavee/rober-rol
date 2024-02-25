@@ -1,16 +1,19 @@
-import { Link } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  //   return <Redirect href={'/rober-rol'} />;
+  const [stats, setStats] = useState({
+    ataque: 0,
+    defensa: 0,
+    mente: 0,
+    otro: 0,
+    destreza: 0,
+    interaccion: 0,
+  });
 
   return (
     <View style={styles.container}>
-      <Text>Hacer un login o algo</Text>
-
-      <Link href={'/ficha'}>ficha</Link>
-      <Link href={'/info'}>info</Link>
-      <Link href={'/admin'}>admin</Link>
+      <Text>Para que el master modifique cosas</Text>
     </View>
   );
 }
