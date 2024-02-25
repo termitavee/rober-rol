@@ -1,0 +1,39 @@
+If (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {   
+  $arguments = "& '" + $myinvocation.mycommand.definition + "'"
+  Start-Process powershell -Verb runAs -ArgumentList $arguments
+
+Write-Host "Require elevated"
+$Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+  Break
+}
+
+
+
+# $remoteport = powershell.exe -c "netstat -an | findstr ':80'"
+$remoteport =bash.exe -c "ifconfig eth0 | grep 'inet '"
+$found = $remoteport -match '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}';
+  Write-Output "IP address $found";
+
+
+if ($found) {
+  $remoteport = $matches[0];
+}
+else {
+  Write-Output "IP address could not be found";
+  exit;
+}
+
+$ports = @(8080, 8081, 19000, 19001);
+
+for ($i = 0; $i -lt $ports.length; $i++) {
+  $port = $ports[$i];
+  Invoke-Expression "netsh interface portproxy delete v4tov4 listenport=$port";
+  Invoke-Expression "netsh advfirewall firewall delete rule name=$port";
+
+  Invoke-Expression "netsh interface portproxy add v4tov4 listenport=$port connectport=$port connectaddress=$remoteport";
+  Invoke-Expression "netsh advfirewall firewall add rule name=$port dir=in action=allow protocol=TCP localport=$port";
+}
+
+Invoke-Expression "netsh interface portproxy show v4tov4";
+
