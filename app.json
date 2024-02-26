@@ -1,9 +1,10 @@
 {
   "expo": {
+    "owner": "Termitavee",
     "name": "expo-universal",
     "slug": "expo-universal",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -26,12 +27,21 @@
       "output": "server",
       "bundler": "metro"
     },
-    "experiments": {},
+    "experiments": {
+      "typedRoutes": true
+    },
+    "jsEngine": "hermes",
     "plugins": [
       [
         "expo-router",
         {
-          "origin": "--"
+          "origin": "--",
+          "asyncRoutes": {
+            "web": true,
+            "android": false,
+            "ios": false,
+            "default": "development"
+          }
         }
       ]
     ]

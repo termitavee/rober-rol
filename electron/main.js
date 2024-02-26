@@ -33,7 +33,7 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   createWindow();
-  setupLocalFilesNormalizerProxy();
+  // setupLocalFilesNormalizerProxy();
 
   app.on('activate', () => {
     // On macOS it's common to re-create a window in the app when the
